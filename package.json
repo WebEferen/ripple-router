@@ -1,6 +1,6 @@
 {
   "name": "ripplejs-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight router for ripple applications",
   "type": "module",
   "engines": {
@@ -11,7 +11,9 @@
     "format:check": "prettier --check ."
   },
   "keywords": [
+    "typescript",
     "ripple",
+    "routing",
     "router"
   ],
   "author": {

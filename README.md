@@ -2,16 +2,16 @@
 
 🚧 **Alpha Version** - This library is currently in alpha development and may have breaking changes.
 
-A lightweight, type-safe router for [Ripple](https://github.com/ripple-framework/ripple) applications.
+A lightweight, type-safe router for [Ripple](https://github.com/trueadm/ripple) applications.
 
 ## Installation
 
 ```bash
-npm install ripple-router
+npm install ripplejs-router
 # or
-pnpm add ripple-router
+pnpm add ripplejs-router
 # or
-yarn add ripple-router
+yarn add ripplejs-router
 ```
 
 ## Requirements
@@ -22,7 +22,7 @@ yarn add ripple-router
 ## Quick Start
 
 ```ripple
-import { RouterProvider, Route, Link } from 'ripple-router';
+import { RouterProvider, Route, Link } from 'ripplejs-router';
 
 // Define your components
 export component Home() {
@@ -98,7 +98,7 @@ Navigational component for client-side routing.
 Programmatically navigate to a path.
 
 ```typescript
-import { navigateTo } from 'ripple-router';
+import { navigateTo } from 'ripplejs-router';
 
 navigateTo('/dashboard');
 ```
@@ -108,7 +108,7 @@ navigateTo('/dashboard');
 Navigate with query parameters.
 
 ```typescript
-import { navigateToWithSearchParams } from 'ripple-router';
+import { navigateToWithSearchParams } from 'ripplejs-router';
 
 navigateToWithSearchParams('/search', { q: 'ripple', category: 'framework' });
 // Navigates to: /search?q=ripple&category=framework
@@ -119,7 +119,7 @@ navigateToWithSearchParams('/search', { q: 'ripple', category: 'framework' });
 Navigate with a hash fragment.
 
 ```typescript
-import { navigateToWithHash } from 'ripple-router';
+import { navigateToWithHash } from 'ripplejs-router';
 
 navigateToWithHash('/docs', 'installation');
 // Navigates to: /docs#installation
