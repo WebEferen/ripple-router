@@ -1,0 +1,10 @@
+import { createContext } from 'ripple';
+
+/**
+ * Navigation context.
+ */
+export const NavigationContext = createContext({
+    navigate: function (path: string) {
+        window.location.href = path;
+    }
+})

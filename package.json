@@ -1,0 +1,37 @@
+{
+  "name": "ripple-router",
+  "version": "0.0.1",
+  "description": "A lightweight router for ripple applications",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "ripple",
+    "router"
+  ],
+  "author": {
+    "name": "Michal Makowski",
+    "email": "michal.makowski97@gmail.com"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/types/index.d.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-ripple": "^0.2.29",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "ripple": "^0.2.35"
+  }
+}

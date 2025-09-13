@@ -1,0 +1,7 @@
+import { createContext } from 'ripple';
+import type { PathFragment } from '../types/internal';
+
+/**
+ * Routes context.
+ */
+export const RoutesContext = createContext(new Map<string, PathFragment>())

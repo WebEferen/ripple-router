@@ -1,0 +1,40 @@
+import type { Component } from 'ripple';
+
+import type { RouteProps } from '../types';
+import { LocationContext } from '../contexts/LocationContext.ripple';
+import { RoutesContext } from '../contexts/RoutesContext.ripple';
+import { formatPath } from '../utils/formatPath';
+import { matchPath } from '../utils/matchPath';
+import { getParams } from '../utils/getParams';
+
+/**
+ * Route component.
+ *
+ * @param props - The route props.
+ * @param props.path - The path of the route.
+ * @param props.$element - The element to render when the route matches.
+ * @returns The route component.
+ */
+export component Route(props: { path: string, $element: Component }) {
+    const { path, $element } = props;
+    
+    // Set routes context (each route only once!)
+    const routes = RoutesContext.get();
+
+    // Add route to routes context
+    routes.set(path, $element);
+    RoutesContext.set(routes);
+
+    // Get location pathname
+    const locationPathname = LocationContext.get().pathname;
+    const locationPathFragments = formatPath(locationPathname);
+    const routePathFragments = formatPath(path);
+
+    // Get route params
+    const routeParams = getParams(routePathFragments, locationPathFragments);
+
+    // Match path
+    if (matchPath(routePathFragments, locationPathFragments)) {
+        <$element params={routeParams} />
+    }
+}

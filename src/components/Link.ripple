@@ -1,0 +1,15 @@
+import type { Component } from 'ripple';
+import navigateTo from '../utils/navigateTo';
+
+/**
+ * Link component.
+ *
+ * @param props - The link props.
+ * @param props.$to - The link to.
+ * @param props.$children - The link children.
+ */
+export component Link(props: { to: string; $children: Component }) {
+	const { to, $children} = props;
+
+	<a onclick={() => navigateTo(to)}><$children /></a>
+}
