@@ -1,8 +1,6 @@
 import type { Component } from 'ripple';
 
-import { NavigationContext } from '../contexts/NavigationContext.ripple';
 import { RoutesContext } from '../contexts/RoutesContext.ripple';
-import { initializedGuard } from '../utils/initializedGuard';
 
 /**
  * Route component.
@@ -15,11 +13,6 @@ export component Route(props: { path: string, $element: Component }) {
     const { path, $element } = props;
 
     const routes = RoutesContext.get();
-    const navigation = NavigationContext.get();
-
-    // Check for proper context alignment
-    initializedGuard(routes, 'Routes context is required');
-    initializedGuard(navigation?.pathname, 'Route component needs to be inside Router component');
 
     // Add route to routes context
     routes.set(path, $element);

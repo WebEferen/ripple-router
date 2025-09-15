@@ -11,5 +11,10 @@ import navigateTo from '../utils/navigateTo';
 export component Link(props: { to: string; $children: Component }) {
 	const { to, $children} = props;
 
-	<a onclick={() => navigateTo(to)}><$children /></a>
+	const navigate = (e) => {
+		e.preventDefault();
+		navigateTo(to);
+	}
+
+	<a onclick={navigate}><$children /></a>
 }

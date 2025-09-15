@@ -4,4 +4,4 @@ import type { Component } from 'ripple';
 /**
  * Routes context.
  */
-export const RoutesContext = createContext(new Map<string, Component>())
+export const RoutesContext = createContext(new Map<string, Component>());

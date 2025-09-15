@@ -12,9 +12,13 @@ export default function navigateTo(
 	options?: { replace?: boolean; searchParams?: Record<string, string>; hash?: string }
 ) {
 	const search = new URLSearchParams(options?.searchParams).toString();
+	const url = options?.searchParams ? `${path}?${search}` : path;
 
-	if (options?.replace) window.history.replaceState({}, '', path);
 	if (options?.hash) window.location.hash = options.hash;
 
-	window.location.href = options?.searchParams ? `${path}?${search}` : path;
+	options?.replace
+		? window.history.replaceState({}, '', path)
+		: window.history.pushState({}, '', url);
+
+	window.dispatchEvent(new Event('popstate'));
 }

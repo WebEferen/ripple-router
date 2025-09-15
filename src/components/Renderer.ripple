@@ -1,7 +1,6 @@
+import { effect } from 'ripple';
 import { NotFound } from '../components/NotFound.ripple';
 import { RoutesContext } from '../contexts/RoutesContext.ripple';
-import { NavigationContext } from '../contexts/NavigationContext.ripple';
-import { initializedGuard } from '../utils/initializedGuard';
 import { formatPath } from '../utils/formatPath';
 import { matchPath } from '../utils/matchPath';
 import { getParams } from '../utils/getParams';
@@ -9,26 +8,35 @@ import { SYMBOLS } from '../constants';
 
 export component Renderer() {
     const routes = RoutesContext.get();
+    let $routeMatched = false;
 
     // Get location pathname
-    const locationPathname = NavigationContext.get().pathname;
-    const locationPathFragments = formatPath(locationPathname);
+    let $path = window.location.pathname;
+    const $locationPathFragments = formatPath($path);
+
+    effect(() => {
+        function listenToNavigation() {
+            $path = window.location.pathname;
+        }
+
+        window.addEventListener('popstate', listenToNavigation);
+        return () => window.removeEventListener('popstate', listenToNavigation);
+    })
 
     // Match path
-    let routeMatched = false;
     for (const route of routes.keys()) {
         const routePathFragments = formatPath(route);
-        const routeParams = getParams(routePathFragments, locationPathFragments);
+        const routeParams = getParams(routePathFragments, $locationPathFragments);
 
         const $element = routes.get(route);
 
-        if (matchPath(routePathFragments, locationPathFragments)) {
+        if (matchPath(routePathFragments, $locationPathFragments)) {
             <$element params={routeParams} />
-            routeMatched = true;
+            $routeMatched = true;
         }
     }
 
-    if (!routeMatched) {
+    if (!$routeMatched) {
         const CustomNotFound = routes.get(SYMBOLS.CATCH_ALL);
 
         if (CustomNotFound) {

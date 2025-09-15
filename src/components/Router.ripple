@@ -1,5 +1,4 @@
 import type { Component } from 'ripple';
-import { NavigationContext } from '../contexts/NavigationContext.ripple';
 import { Renderer } from '../components/Renderer.ripple';
 
 /**
@@ -11,13 +10,6 @@ import { Renderer } from '../components/Renderer.ripple';
  */
 export component Router(props: { $children: Component }) {
     const { $children } = props;
-
-	NavigationContext.set({
-		pathname: window.location.pathname,
-		searchParams: window.location.search,
-		host: window.location.host,
-		hash: window.location.hash,
-	});
 
 	<$children />
     <Renderer />
