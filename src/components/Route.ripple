@@ -1,12 +1,8 @@
 import type { Component } from 'ripple';
 
-import type { RouteProps } from '../types';
 import { NavigationContext } from '../contexts/NavigationContext.ripple';
 import { RoutesContext } from '../contexts/RoutesContext.ripple';
 import { initializedGuard } from '../utils/initializedGuard';
-import { formatPath } from '../utils/formatPath';
-import { matchPath } from '../utils/matchPath';
-import { getParams } from '../utils/getParams';
 
 /**
  * Route component.
@@ -14,7 +10,6 @@ import { getParams } from '../utils/getParams';
  * @param props - The route props.
  * @param props.path - The path of the route.
  * @param props.$element - The element to render when the route matches.
- * @returns The route component.
  */
 export component Route(props: { path: string, $element: Component }) {
     const { path, $element } = props;
@@ -22,23 +17,11 @@ export component Route(props: { path: string, $element: Component }) {
     const routes = RoutesContext.get();
     const navigation = NavigationContext.get();
 
+    // Check for proper context alignment
     initializedGuard(routes, 'Routes context is required');
     initializedGuard(navigation?.pathname, 'Route component needs to be inside Router component');
 
     // Add route to routes context
     routes.set(path, $element);
     RoutesContext.set(routes);
-
-    // Get location pathname
-    const locationPathname = NavigationContext.get().pathname;
-    const locationPathFragments = formatPath(locationPathname);
-    const routePathFragments = formatPath(path);
-
-    // Get route params
-    const routeParams = getParams(routePathFragments, locationPathFragments);
-
-    // Match path
-    if (matchPath(routePathFragments, locationPathFragments)) {
-        <$element params={routeParams} />
-    }
 }
