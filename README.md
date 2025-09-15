@@ -52,14 +52,14 @@ export component App() {
 
 ### Components
 
-#### `RouterProvider`
+#### `Router`
 
 The root router component that manages routing state and navigation.
 
 ```ripple
-<RouterProvider>
+<Router>
     {/* Your routes go here */}
-</RouterProvider>
+</Router>
 ```
 
 **Props:**
