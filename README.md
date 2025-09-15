@@ -28,14 +28,14 @@ import { RouterProvider, Route, Link } from 'ripplejs-router';
 export component Home() {
     <div>
         <h1>Welcome to Home</h1>
-        <Link $to="/about">Go to About</Link>
+        <Link to="/about">Go to About</Link>
     </div>
 }
 
 export component About() {
     <div>
         <h1>About Page</h1>
-        <Link $to="/">Back to Home</Link>
+        <Link to="/">Back to Home</Link>
     </div>
 }
 
@@ -82,18 +82,18 @@ Defines a route with a path pattern and associated component.
 Navigational component for client-side routing.
 
 ```ripple
-<Link $to="/dashboard">
+<Link to="/dashboard">
     <span>Go to Dashboard</span>
 </Link>
 ```
 
 **Props:**
-- `$to: string` - Target path
+- `to: string` - Target path
 - `$children: Component` - Link content
 
 ### Navigation Functions
 
-#### `navigateTo(path: string)`
+#### `navigateTo(path: string, options?: { replace?: boolean; searchParams?: Record<string, string>; hash?: string })`
 
 Programmatically navigate to a path.
 
@@ -103,25 +103,25 @@ import { navigateTo } from 'ripplejs-router';
 navigateTo('/dashboard');
 ```
 
-#### `navigateToWithSearchParams(path: string, searchParams: Record<string, string>)`
+#### `navigateTo(path: string, options?: { searchParams?: Record<string, string>  })`
 
 Navigate with query parameters.
 
 ```typescript
-import { navigateToWithSearchParams } from 'ripplejs-router';
+import { navigateTo } from 'ripplejs-router';
 
-navigateToWithSearchParams('/search', { q: 'ripple', category: 'framework' });
+navigateTo('/search', { searchParams: { q: 'ripple', category: 'framework' } });
 // Navigates to: /search?q=ripple&category=framework
 ```
 
-#### `navigateToWithHash(path: string, hash: string)`
+#### `navigateTo(path: string, options?: { hash?: string })`
 
 Navigate with a hash fragment.
 
 ```typescript
-import { navigateToWithHash } from 'ripplejs-router';
+import { navigateTo } from 'ripplejs-router';
 
-navigateToWithHash('/docs', 'installation');
+navigateTo('/docs', { hash: 'installation' });
 // Navigates to: /docs#installation
 ```
 

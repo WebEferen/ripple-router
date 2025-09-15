@@ -1,8 +1,9 @@
 import type { Component } from 'ripple';
 
 import type { RouteProps } from '../types';
-import { LocationContext } from '../contexts/LocationContext.ripple';
+import { NavigationContext } from '../contexts/NavigationContext.ripple';
 import { RoutesContext } from '../contexts/RoutesContext.ripple';
+import { initializedGuard } from '../utils/initializedGuard';
 import { formatPath } from '../utils/formatPath';
 import { matchPath } from '../utils/matchPath';
 import { getParams } from '../utils/getParams';
@@ -17,16 +18,19 @@ import { getParams } from '../utils/getParams';
  */
 export component Route(props: { path: string, $element: Component }) {
     const { path, $element } = props;
-    
-    // Set routes context (each route only once!)
+
     const routes = RoutesContext.get();
+    const navigation = NavigationContext.get();
+
+    initializedGuard(routes, 'Routes context is required');
+    initializedGuard(navigation?.pathname, 'Route component needs to be inside Router component');
 
     // Add route to routes context
     routes.set(path, $element);
     RoutesContext.set(routes);
 
     // Get location pathname
-    const locationPathname = LocationContext.get().pathname;
+    const locationPathname = NavigationContext.get().pathname;
     const locationPathFragments = formatPath(locationPathname);
     const routePathFragments = formatPath(path);
 

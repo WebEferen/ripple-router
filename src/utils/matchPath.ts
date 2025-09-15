@@ -1,4 +1,4 @@
-import { PathFragment } from '../types';
+import { PathFragment } from '../types/internal';
 
 /**
  * Matches two path fragments arrays.

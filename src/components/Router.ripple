@@ -1,0 +1,22 @@
+import type { Component } from 'ripple';
+import { NavigationContext } from '../contexts/NavigationContext.ripple';
+
+/**
+ * Router component.
+ *
+ * @param props - The router props.
+ * @param props.$children - The router children.
+ * @returns The router component.
+ */
+export component Router(props: { $children: Component }) {
+	NavigationContext.set({
+		pathname: window.location.pathname,
+		searchParams: window.location.search,
+		host: window.location.host,
+		hash: window.location.hash,
+	});
+
+	const { $children } = props;
+
+	<$children />
+}

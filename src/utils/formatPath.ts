@@ -1,4 +1,4 @@
-import { PathFragment } from '../types';
+import { PathFragment } from '../types/internal';
 
 /**
  * Formats a path string into an array of path fragments.

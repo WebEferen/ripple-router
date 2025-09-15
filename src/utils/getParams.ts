@@ -1,4 +1,4 @@
-import type { PathFragment } from '../types';
+import type { PathFragment } from '../types/internal';
 
 /**
  * Get route params from location fragments.

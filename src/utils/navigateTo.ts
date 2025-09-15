@@ -2,28 +2,19 @@
  * Navigates to a path.
  *
  * @param path - The path to navigate to.
+ * @param options - The options to navigate with.
+ * @param options.replace - Whether to replace the current history entry.
+ * @param options.searchParams - The search params to navigate with.
+ * @param options.hash - The hash to navigate with.
  */
-export default function navigateTo(path: string) {
-	window.location.href = path;
-}
+export default function navigateTo(
+	path: string,
+	options?: { replace?: boolean; searchParams?: Record<string, string>; hash?: string }
+) {
+	const search = new URLSearchParams(options?.searchParams).toString();
 
-/**
- * Navigates to a path with search params.
- *
- * @param path - The path to navigate to.
- * @param searchParams - The search params to navigate with.
- */
-export function navigateToWithSearchParams(path: string, searchParams: Record<string, string>) {
-	const search = new URLSearchParams(searchParams).toString();
-	navigateTo(`${path}?${search}`);
-}
+	if (options?.replace) window.history.replaceState({}, '', path);
+	if (options?.hash) window.location.hash = options.hash;
 
-/**
- * Navigates to a path with hash.
- *
- * @param path - The path to navigate to.
- * @param hash - The hash to navigate with.
- */
-export function navigateToWithHash(path: string, hash: string) {
-	navigateTo(`${path}#${hash}`);
+	window.location.href = options?.searchParams ? `${path}?${search}` : path;
 }
