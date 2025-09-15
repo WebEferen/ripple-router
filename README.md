@@ -168,6 +168,33 @@ export component PostDetail(props: RouteProps) {
 }
 ```
 
+## Not Found Pages
+
+Use the `**` wildcard pattern to create a catch-all route for 404 pages:
+
+```ripple
+export component NotFound() {
+    <div>
+        <h1>404 - Page Not Found</h1>
+        <p>The page you're looking for doesn't exist.</p>
+        <Link to="/">Go back home</Link>
+    </div>
+}
+
+// Add the not found route at the end of your routes
+export component App() {
+    <RouterProvider>
+        <Route path="/" $element={Home} />
+        <Route path="/about" $element={About} />
+        <Route path="/users/:id" $element={UserProfile} />
+        {/* Catch-all route for 404 pages */}
+        <Route path="**" $element={NotFound} />
+    </RouterProvider>
+}
+```
+
+**Important:** The `**` route should be placed last in your route definitions, as it will match any path that hasn't been matched by previous routes.
+
 ## Development Status
 
 ⚠️ **This is an alpha release** - The API may change significantly before the stable release. Use in production at your own risk.
