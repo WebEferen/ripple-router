@@ -7,11 +7,11 @@ A lightweight, type-safe router for [Ripple](https://github.com/trueadm/ripple) 
 ## Installation
 
 ```bash
-npm install ripplejs-router
+npm install ripple-router
 # or
-pnpm add ripplejs-router
+pnpm add ripple-router
 # or
-yarn add ripplejs-router
+yarn add ripple-router
 ```
 
 ## Requirements
@@ -22,7 +22,7 @@ yarn add ripplejs-router
 ## Quick Start
 
 ```ripple
-import { RouterProvider, Route, Link } from 'ripplejs-router';
+import { RouterProvider, Route, Link } from 'ripple-router';
 
 // Define your components
 export component Home() {
@@ -98,7 +98,7 @@ Navigational component for client-side routing.
 Programmatically navigate to a path.
 
 ```typescript
-import { navigateTo } from 'ripplejs-router';
+import { navigateTo } from 'ripple-router';
 
 navigateTo('/dashboard');
 ```
@@ -108,7 +108,7 @@ navigateTo('/dashboard');
 Navigate with query parameters.
 
 ```typescript
-import { navigateTo } from 'ripplejs-router';
+import { navigateTo } from 'ripple-router';
 
 navigateTo('/search', { searchParams: { q: 'ripple', category: 'framework' } });
 // Navigates to: /search?q=ripple&category=framework
@@ -119,7 +119,7 @@ navigateTo('/search', { searchParams: { q: 'ripple', category: 'framework' } });
 Navigate with a hash fragment.
 
 ```typescript
-import { navigateTo } from 'ripplejs-router';
+import { navigateTo } from 'ripple-router';
 
 navigateTo('/docs', { hash: 'installation' });
 // Navigates to: /docs#installation
