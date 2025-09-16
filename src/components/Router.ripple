@@ -8,9 +8,7 @@ import { Renderer } from '../components/Renderer.ripple';
  * @param props.$children - The router children.
  * @returns The router component.
  */
-export component Router(props: { $children: Component }) {
-    const { $children } = props;
-
+export component Router({ $children }) {
 	<$children />
     <Renderer />
 }
