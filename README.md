@@ -1,6 +1,9 @@
 # Ripple Router
 
-**IMPORTANT** - For now package is available under `ripplejs-router`. It will be renamed to `ripple-router` in the close future.
+**IMPORTANT** - For now package is available under `ripplejs-router`.
+It will be renamed to `ripple-router` in the close future.
+
+
 🚧 **Alpha Version** - This library is currently in alpha development and may have breaking changes.
 
 A lightweight, type-safe router for [Ripple](https://github.com/trueadm/ripple) applications.
@@ -23,7 +26,7 @@ yarn add ripple-router
 ## Quick Start
 
 ```ripple
-import { RouterProvider, Route, Link } from 'ripple-router';
+import { Router, Route, Link } from 'ripple-router';
 
 // Define your components
 export component Home() {
@@ -184,13 +187,13 @@ export component NotFound() {
 
 // Add the not found route at the end of your routes
 export component App() {
-    <RouterProvider>
+    <Router>
         <Route path="/" $element={Home} />
         <Route path="/about" $element={About} />
         <Route path="/users/:id" $element={UserProfile} />
         {/* Catch-all route for 404 pages */}
         <Route path="**" $element={NotFound} />
-    </RouterProvider>
+    </Router>
 }
 ```
 
