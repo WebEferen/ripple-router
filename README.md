@@ -1,5 +1,6 @@
 # Ripple Router
 
+**IMPORTANT** - For now package is available under `ripplejs-router`. It will be renamed to `ripple-router` in the close future.
 🚧 **Alpha Version** - This library is currently in alpha development and may have breaking changes.
 
 A lightweight, type-safe router for [Ripple](https://github.com/trueadm/ripple) applications.
@@ -41,10 +42,10 @@ export component About() {
 
 // Set up your router
 export component App() {
-    <RouterProvider>
+    <Router>
         <Route path="/" $element={Home} />
         <Route path="/about" $element={About} />
-    </RouterProvider>
+    </Router>
 }
 ```
 
