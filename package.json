@@ -1,6 +1,6 @@
 {
   "name": "ripple-router",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A lightweight router for ripple applications",
   "type": "module",
   "engines": {
