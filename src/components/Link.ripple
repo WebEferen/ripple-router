@@ -6,15 +6,13 @@ import navigateTo from '../utils/navigateTo';
  *
  * @param props - The link props.
  * @param props.to - The link to.
- * @param props.$children - The link children.
+ * @param props.children - The link children.
  */
-export component Link(props: { to: string; $children: Component }) {
-	const { to, $children} = props;
-
+export component Link(props: { to: string; children: Component }) {
 	const navigate = (e) => {
 		e.preventDefault();
-		navigateTo(to);
+		navigateTo(props.to);
 	}
 
-	<a onclick={navigate}><$children /></a>
+	<a onclick={navigate}><props.children /></a>
 }

@@ -5,10 +5,10 @@ import { Renderer } from '../components/Renderer.ripple';
  * Router component.
  *
  * @param props - The router props.
- * @param props.$children - The router children.
+ * @param props.children - The router children.
  * @returns The router component.
  */
-export component Router({ $children }) {
-	<$children />
+export component Router({ children }) {
+	<children />
     <Renderer />
 }

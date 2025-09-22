@@ -1,3 +1,4 @@
+
 import type { Component } from 'ripple';
 
 import { RoutesContext } from '../contexts/RoutesContext.ripple';
@@ -7,14 +8,14 @@ import { RoutesContext } from '../contexts/RoutesContext.ripple';
  *
  * @param props - The route props.
  * @param props.path - The path of the route.
- * @param props.$element - The element to render when the route matches.
+ * @param props.element - The element to render when the route matches.
  */
-export component Route(props: { path: string, $element: Component }) {
-    const { path, $element } = props;
+export component Route(props: { path: string, element: Component }) {
+    const { path, element } = props;
 
     const routes = RoutesContext.get();
 
     // Add route to routes context
-    routes.set(path, $element);
+    routes.set(path, element);
     RoutesContext.set(routes);
 }

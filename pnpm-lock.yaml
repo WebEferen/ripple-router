@@ -9,15 +9,15 @@ importers:
   .:
     dependencies:
       ripple:
-        specifier: ^0.2.35
-        version: 0.2.36
+        specifier: ^0.2.59
+        version: 0.2.62
     devDependencies:
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
       prettier-plugin-ripple:
-        specifier: ^0.2.29
-        version: 0.2.36(prettier@3.6.2)
+        specifier: ^0.2.59
+        version: 0.2.62(prettier@3.6.2)
       typescript:
         specifier: ^5.9.2
         version: 5.9.2
@@ -52,8 +52,8 @@ packages:
   muggle-string@0.4.1:
     resolution: {integrity: sha512-VNTrAak/KhO2i8dqqnqnAHOa3cYBwXEZe9h+D5h/1ZqFSTEFHdM65lR7RoIqq3tBBYavsOXV84NoHXZ0AkPyqQ==}
 
-  prettier-plugin-ripple@0.2.36:
-    resolution: {integrity: sha512-6AOskAqtAXklvjlVwvnOhBZnfLSYt/V8mTD53288IsY6FLXilsas2La8s33kHcwZLO7KJz1LgndMF4fPMjJSLw==}
+  prettier-plugin-ripple@0.2.62:
+    resolution: {integrity: sha512-fd8Zy65j7Du0dPo/bq1dew0iejWHAD71axDR/lSmTh266XuWOnwVC4zeJkFNK36NtuGp2qBMmHWeBHLxU/29xg==}
     peerDependencies:
       prettier: '>=2.0.0'
 
@@ -62,8 +62,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  ripple@0.2.36:
-    resolution: {integrity: sha512-zpGSKtGGmmN4/z7WB9Mq/QiIxryKm0F0SCoHTmdytSqej2K0U8Jdt1IBCUeePCCbCEQwV4GSt2hB3RrAXAJXUQ==}
+  ripple@0.2.62:
+    resolution: {integrity: sha512-ApzQNa+LBMzktEO/FhKJEzuJzNCPYYZPJJ6ox3D+BQkxdOzQ6VkYTahI1zUL1Yv7G5OIlry91ZWPzSMJl3hkyw==}
 
   typescript@5.9.2:
     resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
@@ -99,13 +99,13 @@ snapshots:
 
   muggle-string@0.4.1: {}
 
-  prettier-plugin-ripple@0.2.36(prettier@3.6.2):
+  prettier-plugin-ripple@0.2.62(prettier@3.6.2):
     dependencies:
       prettier: 3.6.2
 
   prettier@3.6.2: {}
 
-  ripple@0.2.36:
+  ripple@0.2.62:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
       acorn: 8.15.0
