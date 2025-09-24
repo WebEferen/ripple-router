@@ -11,8 +11,8 @@ export component Renderer() {
     let routeMatched = track(false);
 
     // Get location pathname
-    let path = track(window.location.pathname);
-    const locationPathFragments = formatPath(@path);
+    let path = track(() => window.location.pathname);
+    let locationPathFragments = track(() => formatPath(@path));
 
     effect(() => {
         function listenToNavigation() {
@@ -26,9 +26,9 @@ export component Renderer() {
     // Match path
     for (const route of routes.keys()) {
         const routePathFragments = formatPath(route);
-        const routeParams = getParams(routePathFragments, locationPathFragments);
+        const routeParams = getParams(routePathFragments, @locationPathFragments);
 
-        if (matchPath(routePathFragments, locationPathFragments)) {
+        if (matchPath(routePathFragments, @locationPathFragments)) {
             const Element = routes.get(route);
 
             <Element params={routeParams} />
