@@ -1,5 +1,5 @@
 import type { Component } from 'ripple';
-import type { TypedRouteComponent, ExtractPathParams } from '../types/route.d.ts';
+import type { TypedRouteComponent, ExtractPathParams } from '../types/route';
 
 /**
  * Creates a type-safe route configuration that ensures the component

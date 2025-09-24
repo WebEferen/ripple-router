@@ -1,10 +1,5 @@
-// @ts-expect-error: known issue, we're working on it
 export { Router } from './components/Router.ripple';
-
-// @ts-expect-error: known issue, we're working on it
 export { Route } from './components/Route.ripple';
-
-// @ts-expect-error: known issue, we're working on it
 export { Link } from './components/Link.ripple';
 
 export { default as navigateTo } from './utils/navigateTo';
