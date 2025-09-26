@@ -27,15 +27,15 @@ import { Router, Route, Link } from 'ripple-router';
 // Define your components
 export component Home() {
     <div>
-        <h1>Welcome to Home</h1>
-        <Link to="/about">Go to About</Link>
+        <h1>{"Welcome to Home"}</h1>
+    <Link to="/about">{"Go to About"}</Link>
     </div>
 }
 
 export component About() {
     <div>
-        <h1>About Page</h1>
-        <Link to="/">Back to Home</Link>
+        <h1>{"About Page"}</h1>
+        <Link to="/">{"Back to Home"}</Link>
     </div>
 }
 
