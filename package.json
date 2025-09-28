@@ -1,6 +1,6 @@
 {
 	"name": "ripple-router",
-	"version": "0.4.5",
+	"version": "0.4.6",
 	"description": "A lightweight router for ripple applications",
 	"type": "module",
 	"engines": {
@@ -19,6 +19,11 @@
 		".": {
 			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
+		},
+		"router": {
+			"import": "./dist/components/router.ripple",
+			"default": "./dist/components/router.ripple",
+			"require": "./dist/components/router.ripple"
 		}
 	},
 	"keywords": [
