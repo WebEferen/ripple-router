@@ -42,8 +42,8 @@ export component About() {
 // Set up your router
 export component App() {
     <Router>
-        <Route path="/" $element={Home} />
-        <Route path="/about" $element={About} />
+        <Route path="/" element={Home} />
+        <Route path="/about" element={About} />
     </Router>
 }
 ```
@@ -79,8 +79,8 @@ const postRoute = createTypedRoute("/users/:userId/posts/:postId", ({ params }) 
 // Use in your router
 export component App() {
     <Router>
-        <Route path={userRoute.path} $element={userRoute.component} />
-        <Route path={postRoute.path} $element={postRoute.component} />
+        <Route path={userRoute.path} element={userRoute.component} />
+        <Route path={postRoute.path} element={postRoute.component} />
     </Router>
 }
 ```
@@ -120,8 +120,8 @@ export component BlogPost(props: { params: BlogParams }) {
 
 export component App() {
     <Router>
-        <Route path="/users/:id" $element={UserProfile} />
-        <Route path="/blog/:category/:year/:slug" $element={BlogPost} />
+        <Route path="/users/:id" element={UserProfile} />
+        <Route path="/blog/:category/:year/:slug" element={BlogPost} />
     </Router>
 }
 ```
@@ -167,12 +167,12 @@ The root router component that manages routing state and navigation.
 Defines a route with a path pattern and associated component.
 
 ```ripple
-<Route path="/users/:id" $element={UserProfile} />
+<Route path="/users/:id" element={UserProfile} />
 ```
 
 **Props:**
 - `path: string` - URL path pattern (supports dynamic segments with `:`)
-- `$element: Component` - Component to render when route matches
+- `element: Component` - Component to render when route matches
 
 #### `Link`
 
@@ -285,7 +285,7 @@ Support for dynamic route segments using `:` syntax:
 
 ```ripple
 // Route definition
-<Route path="/users/:userId/posts/:postId" $element={PostDetail} />
+<Route path="/users/:userId/posts/:postId" element={PostDetail} />
 
 // Component receives params
 export component PostDetail(props: RouteProps) {
@@ -314,11 +314,11 @@ export component NotFound() {
 // Add the not found route at the end of your routes
 export component App() {
     <Router>
-        <Route path="/" $element={Home} />
-        <Route path="/about" $element={About} />
-        <Route path="/users/:id" $element={UserProfile} />
+        <Route path="/" element={Home} />
+        <Route path="/about" element={About} />
+        <Route path="/users/:id" element={UserProfile} />
         {/* Catch-all route for 404 pages */}
-        <Route path="**" $element={NotFound} />
+        <Route path="**" element={NotFound} />
     </Router>
 }
 ```
