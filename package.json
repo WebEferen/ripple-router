@@ -19,11 +19,6 @@
 		".": {
 			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
-		},
-		"router": {
-			"import": "./dist/components/router.ripple",
-			"default": "./dist/components/router.ripple",
-			"require": "./dist/components/router.ripple"
 		}
 	},
 	"keywords": [
@@ -45,7 +40,7 @@
 		"vite": "^7.1.5",
 		"vite-plugin-ripple": "0.2.36"
 	},
-	"peerDependencies": {
-		"ripple": "^0.2.70"
+	"dependencies": {
+		"ripple": "0.2.70"
 	}
 }
