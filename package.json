@@ -1,6 +1,6 @@
 {
 	"name": "ripple-router",
-	"version": "0.4.6",
+	"version": "0.4.7",
 	"description": "A lightweight router for ripple applications",
 	"type": "module",
 	"engines": {
@@ -40,7 +40,7 @@
 		"vite": "^7.1.5",
 		"vite-plugin-ripple": "0.2.36"
 	},
-	"dependencies": {
+	"peerDependencies": {
 		"ripple": "0.2.70"
 	}
 }

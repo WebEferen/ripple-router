@@ -16,7 +16,7 @@ export component Renderer() {
 
     effect(() => {
         function listenToNavigation() {
-            path = window.location.pathname;
+            @path = window.location.pathname;
         }
 
         window.addEventListener('popstate', listenToNavigation);
@@ -32,7 +32,7 @@ export component Renderer() {
             const Element = routes.get(route);
 
             <Element params={routeParams} />
-            routeMatched = true;
+            @routeMatched = true;
         }
     }
 
