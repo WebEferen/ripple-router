@@ -13,8 +13,8 @@ Example: nested dashboard with side nav
 ``` JSX
 <Router>
   <Route path="/">
-    <Route path="dashboard" $element={Dashboard} />
-    <Route path="settings" $element={Settings} />
+    <Route path="dashboard" element={Dashboard} />
+    <Route path="settings" element={Settings} />
   </Route>
 </Router>
 ```
