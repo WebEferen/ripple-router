@@ -1,0 +1,28 @@
+{
+  "name": "ripple-router-docs",
+  "version": "1.0.0",
+  "description": "The documentation website for Ripple Router",
+  "main": "./.vitepress/config.mts",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "keywords": [
+    "ripple",
+    "documentation",
+    "ripple-router documentation",
+    "vitepress",
+    "vuejs"
+  ],
+  "author": "Michal Makowski",
+  "maintainers": [
+    "Ripple Team"
+  ],
+  "license": "MIT",
+  "packageManager": "pnpm@10.15.0",
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.22"
+  }
+}
