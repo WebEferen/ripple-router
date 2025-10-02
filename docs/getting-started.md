@@ -38,8 +38,8 @@ export component About() {
 
 export component App() {
     <Router>
-        <Route path="/" $element={Home} />
-        <Route path="/about" $element={About} />
+        <Route path="/" element={Home} />
+        <Route path="/about" element={About} />
     </Router>
 }
 ```
@@ -58,7 +58,7 @@ export component UserProfile({ params }) {
 
 export component App() {
     <Router>
-        <Route path="/users/:id" $element={UserProfile} />
+        <Route path="/users/:id" element={UserProfile} />
     </Router>
 }
 ```
