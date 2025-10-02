@@ -30,7 +30,7 @@ and a small loader component.
 ``` JSX
 const LazyProfile = () => import('./Profile.ripple')
 
-<Route path="/profile" $element={LazyProfile} />
+<Route path="/profile" element={LazyProfile} />
 ```
 
 Ensure your bundler handles asynchronous components properly (most modern bundlers do).
