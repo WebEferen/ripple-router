@@ -97,3 +97,6 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
+
+# Cache and Configuration files for documentation site
+cache/
