@@ -188,28 +188,6 @@ Navigational component for client-side routing.
 - `to: string` - Target path
 - `$children: Component` - Link content
 
-### Type-Safe Utilities
-
-#### `createTypedRoute<T>(path: T, component: TypedRouteComponent<T>)`
-
-Creates a type-safe route configuration with automatic parameter type inference.
-
-```typescript
-const route = createTypedRoute("/users/:id", ({ params }) => {
-    // params.id is automatically typed as string
-    return <div>User: {params.id}</div>;
-});
-```
-
-#### `PathParams<T>`
-
-Type helper that extracts parameter types from a path string.
-
-```typescript
-type Params = PathParams<"/users/:id/posts/:postId">;
-// Result: { id: string, postId: string }
-```
-
 ### Navigation Functions
 
 #### `navigateTo(path: string, options?: { replace?: boolean; searchParams?: Record<string, string>; hash?: string })`
