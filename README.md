@@ -48,103 +48,6 @@ export component App() {
 }
 ```
 
-## Type-Safe Routing
-
-Ripple Router now supports type-safe routing with automatic parameter type inference! When you define routes with parameters (like `:id`), TypeScript will automatically infer the correct types for your route components.
-
-### Using `createTypedRoute` Helper
-
-The `createTypedRoute` helper provides the best type-safety experience:
-
-```typescript
-import { createTypedRoute, Router, Route } from 'ripple-router';
-
-// Create a type-safe route - params.id will be automatically typed as string
-const userRoute = createTypedRoute("/users/:id", ({ params }) => {
-    // TypeScript knows params.id is a string
-    return <div>User ID: {params.id}</div>;
-});
-
-// Multiple parameters are also supported
-const postRoute = createTypedRoute("/users/:userId/posts/:postId", ({ params }) => {
-    // TypeScript knows params.userId and params.postId are strings
-    return (
-        <div>
-            <h1>Post {params.postId}</h1>
-            <p>By User {params.userId}</p>
-        </div>
-    );
-});
-
-// Use in your router
-export component App() {
-    <Router>
-        <Route path={userRoute.path} element={userRoute.component} />
-        <Route path={postRoute.path} element={postRoute.component} />
-    </Router>
-}
-```
-
-### Using `PathParams` Type Helper
-
-For more control, you can use the `PathParams` type helper to manually type your components:
-
-```typescript
-import { PathParams, Router, Route } from 'ripple-router';
-
-// Extract parameter types from a path string
-type UserParams = PathParams<"/users/:id">; // { id: string }
-type BlogParams = PathParams<"/blog/:category/:year/:slug">; // { category: string, year: string, slug: string }
-
-export component UserProfile(props: { params: UserParams }) {
-    const { params } = props;
-    return (
-        <div>
-            <h1>User Profile</h1>
-            <p>User ID: {params.id}</p> {/* TypeScript knows this is a string */}
-        </div>
-    );
-}
-
-export component BlogPost(props: { params: BlogParams }) {
-    const { params } = props;
-    return (
-        <div>
-            <h1>Blog Post</h1>
-            <p>Category: {params.category}</p>
-            <p>Year: {params.year}</p>
-            <p>Slug: {params.slug}</p>
-        </div>
-    );
-}
-
-export component App() {
-    <Router>
-        <Route path="/users/:id" element={UserProfile} />
-        <Route path="/blog/:category/:year/:slug" element={BlogPost} />
-    </Router>
-}
-```
-
-### Type Inference Examples
-
-The type system automatically extracts parameters from your path strings:
-
-```typescript
-// Simple parameter
-PathParams<"/users/:id"> // { id: string }
-
-// Multiple parameters
-PathParams<"/users/:userId/posts/:postId"> // { userId: string, postId: string }
-
-// Complex nested paths
-PathParams<"/api/:version/users/:id/settings/:section"> 
-// { version: string, id: string, section: string }
-
-// No parameters
-PathParams<"/about"> // {}
-```
-
 ## API Reference
 
 ### Components
@@ -160,7 +63,7 @@ The root router component that manages routing state and navigation.
 ```
 
 **Props:**
-- `$children: Component` - Child components (typically Route components)
+- `children: Component` - Child components (typically Route components)
 
 #### `Route`
 
@@ -186,7 +89,7 @@ Navigational component for client-side routing.
 
 **Props:**
 - `to: string` - Target path
-- `$children: Component` - Link content
+- `children: Component` - Link content
 
 ### Navigation Functions
 
