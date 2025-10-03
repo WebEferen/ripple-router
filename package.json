@@ -12,7 +12,8 @@
 		"build:tsc": "tsc",
 		"prepack": "pnpm build",
 		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+		"format:check": "prettier --check .",
+		"docs:deploy": "pnpm --filter ripple-router-docs docs:deploy"
 	},
 	"main": "./dist/index.js",
 	"exports": {

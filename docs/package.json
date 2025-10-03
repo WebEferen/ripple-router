@@ -6,7 +6,8 @@
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "docs:deploy": "pnpm docs:build && gh-pages -d .vitepress/dist"
   },
   "keywords": [
     "ripple",
@@ -23,6 +24,7 @@
   "packageManager": "pnpm@10.15.0",
   "devDependencies": {
     "vitepress": "^1.6.4",
-    "vue": "^3.5.22"
+    "vue": "^3.5.22",
+    "gh-pages": "^6.1.1"
   }
 }

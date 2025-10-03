@@ -1,8 +1,12 @@
+// @ts-nocheck
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "Ripple Router Documentation Website",
   description: "The documentation website made for Ripple Router",
+  // Set base for GitHub Pages project site
+  // If repository is WebEferen/ripple-router, base should be '/ripple-router/'
+  base: '/ripple-router/',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
