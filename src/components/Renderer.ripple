@@ -13,6 +13,8 @@ export component Renderer() {
     // Get location pathname
     let path = track(() => window.location.pathname);
     let locationPathFragments = track(() => formatPath(@path));
+    let element = track(null);
+    let params = track(null);
 
     effect(() => {
         function listenToNavigation() {
@@ -23,19 +25,22 @@ export component Renderer() {
         return () => window.removeEventListener('popstate', listenToNavigation);
     })
 
-    // Match path
-    for (const route of routes.keys()) {
-        const routePathFragments = formatPath(route);
-        const routeParams = getParams(routePathFragments, @locationPathFragments);
+    effect(() => {
+        for (const route of routes.keys()) {
+            const routePathFragments = formatPath(route);
 
-        if (matchPath(routePathFragments, @locationPathFragments)) {
-            const Element = routes.get(route);
-
-            <Element params={routeParams} />
-            @routeMatched = true;
+            if (matchPath(routePathFragments, @locationPathFragments)) {
+                @routeMatched = true;
+                @element = routes.get(route);
+                @params = getParams(routePathFragments, @locationPathFragments);
+            }
         }
-    }
+    })
 
+    if (@routeMatched) {
+        <@element params={@params} />
+    }
+    
     if (!@routeMatched) {
         const CustomNotFound = routes.get(SYMBOLS.CATCH_ALL);
 
