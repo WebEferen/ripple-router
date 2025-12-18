@@ -1,0 +1,33 @@
+import { Link } from 'ripple-router';
+
+export component NotFound() {
+	<div class="page">
+		<h1>{'404'}</h1>
+		<p>{'Page not found'}</p>
+		<nav>
+			<Link href="/">{'← Home'}</Link>
+		</nav>
+	</div>
+
+	<style>
+		.page {
+			max-width: 400px;
+			margin: 4rem auto;
+			padding: 2rem;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 4rem;
+			margin: 0;
+			color: #ccc;
+		}
+
+		p {
+			color: #666;
+			margin: 0 0 2rem;
+		}
+
+	</style>
+}
+

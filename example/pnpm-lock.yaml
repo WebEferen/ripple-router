@@ -11,21 +11,8 @@ importers:
       ripple:
         specifier: 0.2.188
         version: 0.2.188
-    devDependencies:
-      prettier:
-        specifier: ^3.6.2
-        version: 3.7.4
-      prettier-plugin-ripple:
-        specifier: 0.2.152
-        version: 0.2.152(prettier@3.7.4)(ripple@0.2.188)
-
-  example:
-    dependencies:
-      ripple:
-        specifier: 0.2.188
-        version: 0.2.188
       ripple-router:
-        specifier: workspace:*
+        specifier: link:..
         version: link:..
     devDependencies:
       '@ripple-ts/eslint-parser':
@@ -772,12 +759,6 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-ripple@0.2.152:
-    resolution: {integrity: sha512-snb1j64I/U7vNoMK5Tr44Pj79cu0+Fa3B9GheCTLkf2AUov7nWAyBU5rNYA+9WsIycTsP4Pp7ZQAmVMuiRY0yQ==}
-    peerDependencies:
-      prettier: '>=2.0.0'
-      ripple: '*'
-
   prettier@3.7.4:
     resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
     engines: {node: '>=14'}
@@ -793,6 +774,8 @@ packages:
 
   ripple@0.2.188:
     resolution: {integrity: sha512-030SsvcPADZWelOxfw5c+H7u55xiL3sEcTQ8jOd5xIz3IHBHVnzurKPmkuFNoscNyOc0VP7Im3Z+hPvbmJSdQw==}
+    peerDependencies:
+      ripple: 0.2.188
 
   rollup@4.53.5:
     resolution: {integrity: sha512-iTNAbFSlRpcHeeWu73ywU/8KuU/LZmNCSxp6fjQkJBD3ivUb8tpDrXhIxEzA05HlYMEwmtaUnb3RP+YNv162OQ==}
@@ -1519,11 +1502,6 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-ripple@0.2.152(prettier@3.7.4)(ripple@0.2.188):
-    dependencies:
-      prettier: 3.7.4
-      ripple: 0.2.188
-
   prettier@3.7.4: {}
 
   punycode@2.3.1: {}
@@ -1542,6 +1520,7 @@ snapshots:
       is-reference: 3.0.3
       magic-string: 0.30.21
       muggle-string: 0.4.1
+      ripple: 0.2.188
       zimmerframe: 1.1.4
 
   rollup@4.53.5:

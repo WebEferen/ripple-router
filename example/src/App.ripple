@@ -1,0 +1,25 @@
+import { Router, Route } from 'ripple-router';
+
+import { Home } from './pages/Home.ripple';
+import { About } from './pages/About.ripple';
+import { NotFound } from './pages/NotFound.ripple';
+
+export component App() {
+	<Router>
+		<Route path="/" element={Home} />
+		<Route path="/about" element={About} />
+		<Route path="**" element={NotFound} />
+	</Router>
+
+	<style global>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: system-ui, sans-serif;
+			line-height: 1.5;
+		}
+	</style>
+}

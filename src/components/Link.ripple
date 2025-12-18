@@ -2,17 +2,34 @@ import type { Component } from 'ripple';
 import navigateTo from '../utils/navigateTo';
 
 /**
- * Link component.
- *
- * @param props - The link props.
- * @param props.to - The link to.
- * @param props.children - The link children.
+ * Check if a URL is external.
  */
-export component Link(props: { to: string; children: Component }) {
-	const navigate = (e) => {
-		e.preventDefault();
-		navigateTo(props.to);
-	}
+function isExternalUrl(url: string): boolean {
+	return url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//');
+}
 
-	<a onclick={navigate}><props.children /></a>
+/**
+ * Link component - passes all props to anchor tag, intercepts onclick for client-side navigation.
+ */
+export component Link(props: { href: string; children: Component } & AnchorHTMLAttributes<HTMLAnchorElement>) {
+	const { children, href, ...rest } = props;
+	const isExternal = isExternalUrl(href);
+
+	const handleClick = (e: MouseEvent) => {
+		// Allow external links to behave normally
+		if (isExternal) return;
+
+		// Allow modified clicks (ctrl/cmd+click to open in new tab)
+		if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+		// Allow if target is set (e.g., _blank)
+		if (props.target) return;
+
+		e.preventDefault();
+		navigateTo(href);
+	};
+
+	<a href={href} onclick={handleClick} {...rest}>
+		<children />
+	</a>
 }
