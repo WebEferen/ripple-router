@@ -28,14 +28,14 @@ import { Router, Route, Link } from 'ripple-router';
 export component Home() {
     <div>
         <h1>{"Welcome to Home"}</h1>
-    <Link to="/about">{"Go to About"}</Link>
+    <Link href="/about">{"Go to About"}</Link>
     </div>
 }
 
 export component About() {
     <div>
         <h1>{"About Page"}</h1>
-        <Link to="/">{"Back to Home"}</Link>
+        <Link href="/">{"Back to Home"}</Link>
     </div>
 }
 
@@ -82,14 +82,15 @@ Defines a route with a path pattern and associated component.
 Navigational component for client-side routing.
 
 ```ripple
-<Link to="/dashboard">
+<Link href="/dashboard">
     <span>Go to Dashboard</span>
 </Link>
 ```
 
 **Props:**
-- `to: string` - Target path
+- `href: string` - Target path
 - `children: Component` - Link content
+- All standard anchor (`<a>`) HTML attributes are also supported
 
 ### Navigation Functions
 
@@ -188,7 +189,7 @@ export component NotFound() {
     <div>
         <h1>404 - Page Not Found</h1>
         <p>The page you're looking for doesn't exist.</p>
-        <Link to="/">Go back home</Link>
+        <Link href="/">Go back home</Link>
     </div>
 }
 

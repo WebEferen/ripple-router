@@ -43,15 +43,13 @@ Behavior
 Declarative navigation component. Prevents full-page reloads and updates history.
 
 ``` JSX
-<Link to="/dashboard">Go to Dashboard</Link>
+<Link href="/dashboard">Go to Dashboard</Link>
 ```
 
 Props
-- `to: string` — target location. Can contain a path and search/hash.
+- `href: string` — target location. Can contain a path and search/hash.
 - `children?: Component` — link content.
-
-Optional props
-- `replace?: boolean` — if true, replaces the current history entry.
+- All standard anchor (`<a>`) HTML attributes are also supported.
 
 ## Navigation helpers
 
