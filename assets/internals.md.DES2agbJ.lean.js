@@ -1,1 +1,0 @@
-import{_ as t,c as a,o,ag as n}from"./chunks/framework.DWxUEc8X.js";const m=JSON.parse('{"title":"Internals","description":"","frontmatter":{},"headers":[],"relativePath":"internals.md","filePath":"internals.md"}'),i={name:"internals.md"};function r(s,e,l,c,d,h){return o(),a("div",null,[...e[0]||(e[0]=[n("",18)])])}const u=t(i,[["render",r]]);export{m as __pageData,u as default};
