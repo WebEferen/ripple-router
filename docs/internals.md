@@ -10,34 +10,42 @@ The whole codebase of the router can be seen at its [GitHub repo](https://github
 
 ## Matching algorithm
 
-Route matching is implemented in `src/utils/matchPath.ts`. The matcher does the
-following:
+Route matching is coordinated by `src/utils/resolveRoute.ts`, using
+`src/utils/matchPath.ts` for path comparison. The matcher does the following:
 
 1. Split the candidate path into fragments by `/`.
 2. Compare fragments to the route pattern; dynamic segments start with `:` and
    capture their value.
-3. Support `*` catch-all patterns by consuming the rest of the path.
+3. Skip the `**` fallback route during normal matching.
 
-The matcher returns a small object with `{ matched: boolean, params: Record }`.
+`matchPath()` returns a boolean. `resolveRoute()` returns the matched route
+pattern, component, and params, or `null` when no normal route matches.
 
 ## Navigation and history
 
 - Navigation functions live in `src/utils/navigateTo.ts` and wrap `history.pushState`/`replaceState`.
-- The Router listens to `popstate` events and re-evaluates route matches.
+- `navigateTo()` dispatches a router-owned navigation event and a `popstate`
+  event after updating history.
+- The Renderer listens to both events and re-evaluates the current match.
 
 ## Contexts
 
-Routing state (current path, match data) is stored in a context provider located at `src/contexts/RoutesContext.ripple`. 
+Route definitions are stored in `src/contexts/RoutesContext.tsrx`.
 
-Route components consume this context to determine whether they should render and which params to pass to their elements.
+`Route` components register their `path` and `element`. `Renderer` resolves the
+current location against that route map and renders the active component with
+`params`.
 
 ## Link implementation details
 
-`src/components/Link.ripple` prevents full page reloads using an `onClick` handler, then calls `navigateTo()` to update history. 
+`src/components/Link.tsrx` prevents full page reloads using an `onClick` handler, then calls `navigateTo()` to update history. 
 
 It also falls back to normal anchor behavior if the user opens the link in a new tab or uses modifier
 keys.
 
 ## Testing
 
-Unit tests should focus on `matchPath.ts` and `navigateTo.ts`. For components, write renderer-level tests that assert which element is rendered for a given path.
+Unit tests should focus on `matchPath.ts`, `resolveRoute.ts`, and
+`navigateTo.ts`. For components, write renderer-level tests that assert which
+element is rendered for a given path and that route changes remount the active
+component.

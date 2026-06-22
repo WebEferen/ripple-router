@@ -1,6 +1,6 @@
-export { Router } from './components/Router.ripple';
-export { Route } from './components/Route.ripple';
-export { Link } from './components/Link.ripple';
+export { Router } from './components/Router.tsrx';
+export { Route } from './components/Route.tsrx';
+export { Link } from './components/Link.tsrx';
 
 export { default as navigateTo } from './utils/navigateTo';
 
