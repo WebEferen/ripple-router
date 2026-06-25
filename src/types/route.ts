@@ -11,7 +11,6 @@ export type ExtractPathParams<T extends string> =
 // Type-safe route props based on path
 export type TypedRouteProps<T extends string> = {
     params: ExtractPathParams<T>;
-    searchParams?: Record<string, string>;
 };
 
 // Helper type for creating type-safe route components

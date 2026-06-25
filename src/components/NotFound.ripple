@@ -1,3 +1,0 @@
-export component NotFound() {
-	<div>{'Not found'}</div>
-}

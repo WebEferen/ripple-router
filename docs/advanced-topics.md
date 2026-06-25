@@ -3,41 +3,45 @@
 This page covers advanced usage patterns, performance tips, and integration
 patterns for Ripple Router.
 
-## Nested routing patterns
+## Organizing route definitions
 
-Ripple Router supports nesting by simply placing `Route` components inside other
-components. The router resolves the best matching route by walking the tree.
+Ripple Router uses a flat route map. Keep route declarations together when that
+makes the app easier to scan, or split them into small components that render
+`Route` entries.
 
-Example: nested dashboard with side nav
+Example: dashboard routes grouped in a component
 
-``` JSX
+```tsx
+export function DashboardRoutes() @{
+  <>
+    <Route path="/dashboard" element={Dashboard} />
+    <Route path="/dashboard/settings" element={Settings} />
+  </>
+}
+
 <Router>
-  <Route path="/">
-    <Route path="dashboard" element={Dashboard} />
-    <Route path="settings" element={Settings} />
-  </Route>
+  <DashboardRoutes />
 </Router>
 ```
 
-When structuring nested routes, prefer small components and delegate parameter
-parsing to child route elements for clarity.
+When structuring larger route lists, prefer explicit full paths.
 
-## Route-based code-splitting
+## Route modules
 
-To reduce initial bundle size, load route elements lazily using dynamic imports
-and a small loader component.
+For larger apps, place route elements in separate modules and import the
+component function into your route list.
 
-``` JSX
-const LazyProfile = () => import('./Profile.ripple')
+```tsx
+import { Profile } from './Profile.tsrx'
 
-<Route path="/profile" element={LazyProfile} />
+<Route path="/profile" element={Profile} />
 ```
 
-Ensure your bundler handles asynchronous components properly (most modern bundlers do).
+`Route` expects `element` to be a component function.
 
 ## Performance considerations
 
-- Keep path matching patterns simple and avoid overly permissive wildcards.
+- Keep path matching patterns simple.
 - Cache expensive operations (e.g., complex matchers) when used repeatedly.
 - Minimize re-renders by keeping route element props stable; avoid creating
   new inline objects in parent renders.

@@ -7,6 +7,8 @@
 		"node": ">=20.0.0"
 	},
 	"scripts": {
+		"build": "npm run typecheck && corepack pnpm --filter ripple-router-example build",
+		"typecheck": "tsc --noEmit",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"docs:deploy": "pnpm --filter ripple-router-docs docs:deploy"
@@ -33,10 +35,11 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
+		"@tsrx/prettier-plugin": "0.3.84",
 		"prettier": "^3.6.2",
-		"prettier-plugin-ripple": "0.2.152"
+		"typescript": "^5.9.2"
 	},
 	"peerDependencies": {
-		"ripple": "0.2.188"
+		"ripple": "0.3.84"
 	}
 }

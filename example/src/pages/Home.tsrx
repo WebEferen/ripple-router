@@ -1,0 +1,66 @@
+import { track } from 'ripple';
+import { Link } from 'ripple-router';
+
+export function Home() @{
+	let &[count] = track(0);
+
+	<>
+		<div class="page">
+			<h1>{'Ripple Router'}</h1>
+			<p class="subtitle">{'Client-side routing for Ripple'}</p>
+
+			<div class="counter">
+				<button onClick={() => count--}>{'-'}</button>
+				<span>{count}</span>
+				<button onClick={() => count++}>{'+'}</button>
+			</div>
+
+			<nav style="display: flex; gap: 1rem; flex-direction: column; justify-content: center;">
+				<Link href="/about">{'About ->'}</Link>
+				<Link href="https://example.com">{'External Link ->'}</Link>
+			</nav>
+		</div>
+
+		<style>
+			.page {
+				max-width: 400px;
+				margin: 4rem auto;
+				padding: 2rem;
+				text-align: center;
+			}
+
+			h1 {
+				font-size: 1.75rem;
+				margin: 0 0 0.5rem;
+			}
+
+			.subtitle {
+				color: #666;
+				margin: 0 0 2rem;
+			}
+
+			.counter {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 1rem;
+				margin-bottom: 2rem;
+			}
+
+			.counter button {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				border: 2px solid #333;
+				background: transparent;
+				font-size: 1.25rem;
+				cursor: pointer;
+			}
+
+			.counter span {
+				font-size: 1.5rem;
+				min-width: 3rem;
+			}
+		</style>
+	</>
+}

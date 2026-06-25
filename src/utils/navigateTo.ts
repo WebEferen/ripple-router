@@ -1,3 +1,5 @@
+import { ROUTER_NAVIGATION_EVENT } from '../constants';
+
 /**
  * Navigates to a path.
  *
@@ -12,13 +14,12 @@ export default function navigateTo(
 	options?: { replace?: boolean; searchParams?: Record<string, string>; hash?: string }
 ) {
 	const search = new URLSearchParams(options?.searchParams).toString();
-	const url = options?.searchParams ? `${path}?${search}` : path;
-
-	if (options?.hash) window.location.hash = options.hash;
+	const url = search ? `${path}?${search}` : path;
+	const target = options?.hash ? `${url}#${options.hash}` : url;
 
 	options?.replace
-		? window.history.replaceState({}, '', path)
-		: window.history.pushState({}, '', url);
+		? window.history.replaceState({}, '', target)
+		: window.history.pushState({}, '', target);
 
-	window.dispatchEvent(new Event('popstate'));
+	window.dispatchEvent(new Event(ROUTER_NAVIGATION_EVENT));
 }

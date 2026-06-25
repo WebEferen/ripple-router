@@ -19,24 +19,24 @@ workspace to test examples.
 
 Create a small app with two pages and client-side navigation.
 
-``` JSX
+```tsx
 import { Router, Route, Link } from 'ripple-router'
 
-export component Home() {
+export function Home() @{
     <div>
         <h1>Home</h1>
         <Link href="/about">About</Link>
     </div>
 }
 
-export component About() {
+export function About() @{
     <div>
         <h1>About</h1>
         <Link href="/">Home</Link>
     </div>
 }
 
-export component App() {
+export function App() @{
     <Router>
         <Route path="/" element={Home} />
         <Route path="/about" element={About} />
@@ -49,14 +49,14 @@ export component App() {
 Routes can include dynamic segments. Ripple Router exposes route parameters
 to the route's element via props (see API Reference -> Types).
 
-``` JSX
-export component UserProfile({ params }) {
+```tsx
+export function UserProfile({ params }) @{
     <div>
         <h1>User: {params.id}</h1>
     </div>
 }
 
-export component App() {
+export function App() @{
     <Router>
         <Route path="/users/:id" element={UserProfile} />
     </Router>

@@ -1,6 +1,6 @@
-export { Router } from './components/Router.ripple';
-export { Route } from './components/Route.ripple';
-export { Link } from './components/Link.ripple';
+export { Router } from './components/Router.tsrx';
+export { Route } from './components/Route.tsrx';
+export { Link } from './components/Link.tsrx';
 
 export { default as navigateTo } from './utils/navigateTo';
 
@@ -9,12 +9,12 @@ export { default as navigateTo } from './utils/navigateTo';
 
 // export { createTypedRoute } from './utils/createTypedRoute';
 // export type { PathParams } from './utils/createTypedRoute';
-// export type { 
-//     ExtractPathParams, 
-//     TypedRouteProps, 
-//     TypedRouteComponent, 
-//     TypedRoute 
+// export type {
+//     ExtractPathParams,
+//     TypedRouteProps,
+//     TypedRouteComponent,
+//     TypedRoute
 // } from './types/route.d.ts';
 
 // Legacy types for backward compatibility
-export type { RouteProps } from './types/index.d.ts';
+export type { RouteProps } from './types';

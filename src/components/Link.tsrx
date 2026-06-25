@@ -1,17 +1,20 @@
-import type { Component } from 'ripple';
+import type { Children } from 'ripple';
 import navigateTo from '../utils/navigateTo';
 
 /**
  * Check if a URL is external.
  */
 function isExternalUrl(url: string): boolean {
-	return url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//');
+	return /^[a-zA-Z][a-zA-Z\d+.-]*:/.test(url) || url.startsWith('//');
 }
 
 /**
- * Link component - passes all props to anchor tag, intercepts onclick for client-side navigation.
+ * Link component - passes all props to anchor tag, intercepts onClick for client-side navigation.
  */
-export component Link(props: { href: string; children: Component } & AnchorHTMLAttributes<HTMLAnchorElement>) {
+export function Link(props: {
+	href: string;
+	children?: Children;
+} & AnchorHTMLAttributes<HTMLAnchorElement>) @{
 	const { children, href, ...rest } = props;
 	const isExternal = isExternalUrl(href);
 
@@ -29,7 +32,5 @@ export component Link(props: { href: string; children: Component } & AnchorHTMLA
 		navigateTo(href);
 	};
 
-	<a href={href} onclick={handleClick} {...rest}>
-		<children />
-	</a>
+	<a href={href} onClick={handleClick} {...rest}>{children}</a>
 }

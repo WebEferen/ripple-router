@@ -31,8 +31,8 @@ summary: |
 ## Why Ripple Router?
 
 Ripple Router aims to be the simplest router you can use in a Ripple app while still
-providing enough features for common apps: nested routes, dynamic parameters, link
-components, and programmatic navigation. It's intentionally small so it can be
+providing enough features for common apps: dynamic parameters, fallback routes,
+link components, and programmatic navigation. It's intentionally small so it can be
 composed with other libraries and integrated into existing projects easily.
 
 ## Quick Links

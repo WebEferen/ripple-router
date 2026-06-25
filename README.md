@@ -21,18 +21,18 @@ yarn add ripple-router
 
 ## Quick Start
 
-```ripple
+```tsx
 import { Router, Route, Link } from 'ripple-router';
 
 // Define your components
-export component Home() {
+export function Home() @{
     <div>
         <h1>{"Welcome to Home"}</h1>
     <Link href="/about">{"Go to About"}</Link>
     </div>
 }
 
-export component About() {
+export function About() @{
     <div>
         <h1>{"About Page"}</h1>
         <Link href="/">{"Back to Home"}</Link>
@@ -40,7 +40,7 @@ export component About() {
 }
 
 // Set up your router
-export component App() {
+export function App() @{
     <Router>
         <Route path="/" element={Home} />
         <Route path="/about" element={About} />
@@ -56,7 +56,7 @@ export component App() {
 
 The root router component that manages routing state and navigation.
 
-```ripple
+```tsx
 <Router>
     {/* Your routes go here */}
 </Router>
@@ -69,7 +69,7 @@ The root router component that manages routing state and navigation.
 
 Defines a route with a path pattern and associated component.
 
-```ripple
+```tsx
 <Route path="/users/:id" element={UserProfile} />
 ```
 
@@ -81,7 +81,7 @@ Defines a route with a path pattern and associated component.
 
 Navigational component for client-side routing.
 
-```ripple
+```tsx
 <Link href="/dashboard">
     <span>Go to Dashboard</span>
 </Link>
@@ -130,47 +130,30 @@ navigateTo('/docs', { hash: 'installation' });
 
 #### `RouteProps`
 
-Props passed to route components (legacy, use `TypedRouteProps` for type safety):
+Props passed to route components:
 
 ```typescript
-type RouteProps = {
+type RouteProps<T extends string = string> = {
     params: Record<string, string>;      // Dynamic route parameters
-    searchParams?: Record<string, string>; // Query parameters
 };
 ```
 
-#### `TypedRouteProps<T>`
-
-Type-safe props for route components based on path pattern:
+Pass a path literal to infer parameter names:
 
 ```typescript
-type TypedRouteProps<T extends string> = {
-    params: ExtractPathParams<T>;        // Automatically inferred parameters
-    searchParams?: Record<string, string>; // Query parameters
-};
-```
-
-#### `ExtractPathParams<T>`
-
-Utility type that extracts parameter names and types from a path string:
-
-```typescript
-type ExtractPathParams<"/users/:id/posts/:postId"> = {
-    id: string;
-    postId: string;
-}
+type PostRouteProps = RouteProps<'/users/:userId/posts/:postId'>;
 ```
 
 ## Dynamic Routes
 
 Support for dynamic route segments using `:` syntax:
 
-```ripple
+```tsx
 // Route definition
 <Route path="/users/:userId/posts/:postId" element={PostDetail} />
 
 // Component receives params
-export component PostDetail(props: RouteProps) {
+export function PostDetail(props: RouteProps) @{
     const { params } = props;
     // params.userId and params.postId are available
     
@@ -184,8 +167,8 @@ export component PostDetail(props: RouteProps) {
 
 Use the `**` wildcard pattern to create a catch-all route for 404 pages:
 
-```ripple
-export component NotFound() {
+```tsx
+export function NotFound() @{
     <div>
         <h1>404 - Page Not Found</h1>
         <p>The page you're looking for doesn't exist.</p>
@@ -194,7 +177,7 @@ export component NotFound() {
 }
 
 // Add the not found route at the end of your routes
-export component App() {
+export function App() @{
     <Router>
         <Route path="/" element={Home} />
         <Route path="/about" element={About} />
@@ -205,7 +188,7 @@ export component App() {
 }
 ```
 
-**Important:** The `**` route should be placed last in your route definitions, as it will match any path that hasn't been matched by previous routes.
+The `**` route is used only when no normal route matches.
 
 ## Development Status
 

@@ -15,8 +15,9 @@ setup.
 <details>
 <summary>How do I handle query parameters?</summary>
 
-Route elements receive `searchParams` (if provided). For building URLs, use
-`navigateTo(path, { searchParams })`. 
+Use `navigateTo(path, { searchParams })` to build a URL with a query string.
+Inside a route component, read the current query string with
+`new URLSearchParams(window.location.search)`.
 
 Example:
 
@@ -52,7 +53,7 @@ links.
 <summary>How do I debug route matching?</summary>
 
 Inspect `src/utils/matchPath.ts`. Add console logs or unit tests asserting expected
-params for sample paths. Writing small unit tests for edge cases (wildcards,
-trailing slashes) is recommended.
+params for sample paths. Writing small unit tests for edge cases such as dynamic
+segments and trailing slashes is recommended.
 
 </details>
