@@ -22,5 +22,4 @@ export default function navigateTo(
 		: window.history.pushState({}, '', target);
 
 	window.dispatchEvent(new Event(ROUTER_NAVIGATION_EVENT));
-	window.dispatchEvent(new Event('popstate'));
 }

@@ -1,3 +1,4 @@
+import { effect } from 'ripple';
 import type { Component } from 'ripple';
 
 import { RoutesContext } from '../contexts/RoutesContext.tsrx';
@@ -14,7 +15,17 @@ export function Route(props: { path: string; element: Component }) {
 
 	const routes = RoutesContext.get();
 
-	// Add route to routes context
-	routes.set(path, element);
-	RoutesContext.set(routes);
+	if (!routes) {
+		throw new Error('Route must be used within a Router.');
+	}
+
+	effect(() => {
+		routes.set(path, element);
+
+		return () => {
+			if (routes.get(path) === element) {
+				routes.delete(path);
+			}
+		};
+	});
 }

@@ -6,11 +6,17 @@ import { ROUTER_NAVIGATION_EVENT, SYMBOLS } from '../constants';
 
 export function Renderer() @{
 	const routes = RoutesContext.get();
-	let &[match] = track(resolveRoute(routes, window.location.pathname));
+
+	if (!routes) {
+		throw new Error('Renderer must be used within a Router.');
+	}
+
+	let &[path] = track(window.location.pathname);
+	let &[match] = track(() => resolveRoute(routes, path));
 
 	effect(() => {
 		function listenToNavigation() {
-			match = resolveRoute(routes, window.location.pathname);
+			path = window.location.pathname;
 		}
 
 		listenToNavigation();

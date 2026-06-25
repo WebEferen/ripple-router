@@ -5,7 +5,7 @@ import navigateTo from '../utils/navigateTo';
  * Check if a URL is external.
  */
 function isExternalUrl(url: string): boolean {
-	return url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//');
+	return /^[a-zA-Z][a-zA-Z\d+.-]*:/.test(url) || url.startsWith('//');
 }
 
 /**

@@ -1,5 +1,7 @@
+import { RippleMap } from 'ripple';
 import { Renderer } from '../components/Renderer.tsrx';
-import type { PropsWithChildrenOptional } from 'ripple';
+import { RoutesContext } from '../contexts/RoutesContext.tsrx';
+import type { Component, PropsWithChildrenOptional } from 'ripple';
 
 /**
  * Router component.
@@ -9,6 +11,9 @@ import type { PropsWithChildrenOptional } from 'ripple';
  * @returns The router component.
  */
 export function Router(props: PropsWithChildrenOptional) @{
+	const routes = new RippleMap<string, Component>();
+	RoutesContext.set(routes);
+
 	<>
 		{props.children}
 		<Renderer />
